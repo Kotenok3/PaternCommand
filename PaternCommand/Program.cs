@@ -6,28 +6,28 @@ var crCommand = new CreateCommand(figure);
 var DelCommand = new DeleteCommand(figure);
 var FillCommand = new FillCommand(figure);
 
-Stack<ICommand> commands = new Stack<ICommand>();
+Stack<ICommand> historyCommands = new Stack<ICommand>();
 
 //Создаем фигуру
 crCommand.Execute();
-commands.Push(crCommand);
+historyCommands.Push(crCommand);
 
 //Удаляем фигуру
 DelCommand.Execute();
-commands.Push(DelCommand);
+historyCommands.Push(DelCommand);
 
 //Меняем заливку у фигуры
 FillCommand.Execute();
-commands.Push(FillCommand);
+historyCommands.Push(FillCommand);
 
 //Создаем фигуру
 crCommand.Execute();
-commands.Push(crCommand);
+historyCommands.Push(crCommand);
 
 //Отменяем последнюю комманду
-var com = commands.Pop();
+var com = historyCommands.Pop();
 com.Undo();
 
 //Создаем снова заполненую фигуру
 crCommand.Execute();
-commands.Push(crCommand);
+historyCommands.Push(crCommand);

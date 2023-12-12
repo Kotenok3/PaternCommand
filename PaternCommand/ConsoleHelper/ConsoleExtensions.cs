@@ -4,6 +4,7 @@ public static class ConsoleExtensions
 {
     public static void ClearLines(int lines)
     {
+        lines++;
         for (int i = 0; i < lines; i++)
         {
             Console.SetCursorPosition(0, Console.CursorTop - 1);
@@ -37,5 +38,7 @@ public static class ConsoleExtensions
             }
             Console.WriteLine();
         }
+
+        Console.WriteLine();
     }
 }
